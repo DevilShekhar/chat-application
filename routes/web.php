@@ -30,7 +30,7 @@ Route::post('/verify-otp', [ForgotPasswordOtpController::class,'verifyOtp'])->na
 Route::get('/reset-password-form', [ForgotPasswordOtpController::class,'showResetForm'])->name('password.reset.form');
 
 Route::post('/reset-password', [ForgotPasswordOtpController::class,'resetPassword'])->name('password.update.otp');
-
+Route::get('/', function () { return 'Laravel Working';});
 // Dashboard (protected)
 Route::get('/dashboard', [OtpController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 Auth::routes();
@@ -44,7 +44,7 @@ Auth::routes();
         
         Route::resource('users', UsersController::class);
         Route::prefix('clients')->name('clients.')->group(function () {
-            Route::get('/', [UsersController::class, 'Clientindex'])->name('index');
+          
             Route::get('/create', [UsersController::class, 'Clientcreate'])->name('create');
 
             Route::post('/store', [UsersController::class, 'Clientstore'])->name('store');
