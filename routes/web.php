@@ -30,9 +30,7 @@ Route::post('/verify-otp', [ForgotPasswordOtpController::class,'verifyOtp'])->na
 Route::get('/reset-password-form', [ForgotPasswordOtpController::class,'showResetForm'])->name('password.reset.form');
 
 Route::post('/reset-password', [ForgotPasswordOtpController::class,'resetPassword'])->name('password.update.otp');
-Route::get('/', function () {
-    return 'Laravel Working';
-});
+
 // Dashboard (protected)
 Route::get('/dashboard', [OtpController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 Auth::routes();
