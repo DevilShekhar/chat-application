@@ -5,10 +5,10 @@ use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\admin\UsersController;
 use App\Http\Controllers\admin\ProfileController;
 
-use App\Http\Controllers\Admin\GroupsController;
-use App\Http\Controllers\Admin\ChatController;
+use App\Http\Controllers\admin\GroupsController;
+use App\Http\Controllers\admin\ChatController;
 
-use App\Http\Controllers\Admin\OtpController;
+use App\Http\Controllers\admin\OtpController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordOtpController;
 
