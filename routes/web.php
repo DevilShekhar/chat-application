@@ -44,7 +44,7 @@ Auth::routes();
         
         Route::resource('users', UsersController::class);
         Route::prefix('clients')->name('clients.')->group(function () {
-          
+          Route::get('/', [UsersController::class, 'Clientindex'])->name('index'); 
             Route::get('/create', [UsersController::class, 'Clientcreate'])->name('create');
 
             Route::post('/store', [UsersController::class, 'Clientstore'])->name('store');
@@ -53,6 +53,7 @@ Auth::routes();
             Route::put('/update/{id}', [UsersController::class, 'Clientupdate'])->name('update'); // ✅ ADDED
             Route::delete('/destroy/{id}', [UsersController::class, 'Clientdestroy'])->name('destroy'); // ✅ FIXED
         });
+        
         Route::resource('groups', GroupsController::class);   
         // Chat UI
         Route::get('/chat', [ChatController::class, 'index'])->name('chat.index');
