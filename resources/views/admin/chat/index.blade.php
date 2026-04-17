@@ -786,18 +786,15 @@
     window.Echo = new Echo({
         broadcaster: 'pusher',
         key: "hjovy9akjespnitckaxc",
-        wsHost: "127.0.0.1",
-        wsPort: 8080,
-        forceTLS: false,
-        disableStats: true,
         cluster: "mt1",
+        forceTLS: true
     });
 
 
     //  REALTIME FIX START 
 
     // ================= PRIVATE REALTIME =================
-    Echo.channel('chat.{{ auth()->id() }}')
+    Echo.private('chat.{{ auth()->id() }}')
     .listen('.MessageSent', (e) => {
 
         let msg = e.message;
@@ -870,7 +867,7 @@
     // ================= GROUP REALTIME =================
     window.groupIds.forEach(function(groupId) {
 
-        Echo.channel('group.' + groupId)
+       Echo.private('group.' + groupId)
         .listen('.MessageSent', (e) => {
 
             let msg = e.message;
