@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
+use Illuminate\Broadcasting\PrivateChannel; // ✅ FIXED
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Queue\SerializesModels;
 
@@ -21,12 +21,12 @@ class MessageSent implements ShouldBroadcastNow
     {
         if ($this->message->type === 'private') {
             return [
-                new Channel('chat.' . $this->message->receiver_id),
-                new Channel('chat.' . $this->message->sender_id),
+                new PrivateChannel('chat.' . $this->message->receiver_id),
+                new PrivateChannel('chat.' . $this->message->sender_id),
             ];
         }
 
-        return new Channel('group.' . $this->message->group_id);
+        return new PrivateChannel('group.' . $this->message->group_id);
     }
 
     public function broadcastAs()
