@@ -43,16 +43,18 @@ Auth::routes();
         Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
         
         Route::resource('users', UsersController::class);
-        Route::prefix('clients')->name('clients.')->group(function () {
-          Route::get('/', [UsersController::class, 'Clientindex'])->name('index'); 
-            Route::get('/create', [UsersController::class, 'Clientcreate'])->name('create');
+        
+        Route::get('/client', [UsersController::class, 'Clientindex'])->name('clients.index');
 
-            Route::post('/store', [UsersController::class, 'Clientstore'])->name('store');
+        Route::get('/client/create', [UsersController::class, 'Clientcreate'])->name('clients.create');
 
-            Route::get('/edit/{id}', [UsersController::class, 'Clientedit'])->name('edit'); // ✅ FIXED
-            Route::put('/update/{id}', [UsersController::class, 'Clientupdate'])->name('update'); // ✅ ADDED
-            Route::delete('/destroy/{id}', [UsersController::class, 'Clientdestroy'])->name('destroy'); // ✅ FIXED
-        });
+        Route::post('/client/store', [UsersController::class, 'Clientstore'])->name('clients.store');
+
+        Route::get('/client/edit/{id}', [UsersController::class, 'Clientedit'])->name('clients.edit');
+
+        Route::put('/client/update/{id}', [UsersController::class, 'Clientupdate'])->name('clients.update');
+
+        Route::delete('/client/destroy/{id}', [UsersController::class, 'Clientdestroy'])->name('clients.destroy');
         
         Route::resource('groups', GroupsController::class);   
         // Chat UI
